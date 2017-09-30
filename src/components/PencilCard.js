@@ -6,7 +6,7 @@ class PencilsList extends Component {
       <img src={`data:image/gif;base64,${this.props.pencil.Image}`} className="pencil-image"/>
       <p className="pencil-name">{this.props.pencil.Name}</p>
       <p className="pencil-price">{this.props.pencil.Price}</p>
-    </div>;
+    </div>
   }
 }
 
