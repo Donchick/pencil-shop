@@ -4,6 +4,7 @@ import { getPencil, addPencil, updatePencil, deletePencil } from '../actions';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import PencilForm from '../components/PencilForm';
+import Modal from '../containers/Modal';
 
 const mapStateToProps = (state, props) => {
   if (props.match.params._id) {
@@ -50,8 +51,12 @@ class PencilFormPage extends Component {
   }
 
   deletePencil = (id) => {
-    this.props.deletePencil(id)
-      .then(() => {this.setState({ pencilUpdated: true })});
+    return this.modal.open('are you sure?')
+      .then(() => {
+        return this.props.deletePencil(id)
+          .then(() => {this.setState({ pencilUpdated: true })});
+      })
+      .catch(() => {});
   }
 
   render() {
@@ -67,6 +72,7 @@ class PencilFormPage extends Component {
             deletePencil={this.deletePencil}
           />
         }
+        <Modal ref={(modal) => { this.modal = modal; }}/>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CheckboxGroup from './CheckboxGroup';
+import Modal from '../containers/Modal';
 
 class PencilForm extends Component {
   state = {
@@ -148,6 +149,7 @@ class PencilForm extends Component {
     );
     return (
       <div>
+        <Modal ref={(modal) => { this.modal = modal; }}/>
         { form }
 
         {this.state.id &&
