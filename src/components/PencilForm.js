@@ -57,6 +57,12 @@ class PencilForm extends Component {
     */
   }
 
+  deleteClickHandler = (e) => {
+    e.preventDefault();
+
+    this.props.deletePencil(this.state.id);
+  }
+
   handleBuyersChange = (e) => {
     const newSelection = e.target.value;
     let newSelectionArray;
@@ -143,6 +149,10 @@ class PencilForm extends Component {
     return (
       <div>
         { form }
+
+        {this.state.id &&
+          <button className="ui primary button" onClick={this.deleteClickHandler.bind(this)}>Delete</button>
+        }
       </div>
     );
   }

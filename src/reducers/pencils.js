@@ -1,11 +1,5 @@
 const pencils = (state = [], action) => {
     switch (action.type) {
-        case 'PENCIL_ADDED':
-            return [
-                ...state,
-                 action.pencil
-            ]
-
         case 'RECEIVE_PENCILS':
             return action.pencils;
 
@@ -19,6 +13,9 @@ const pencils = (state = [], action) => {
                     action.pencil
                 ]
             }
+
+        case 'PENCIL_DELETED':
+            return state.filter(pencil => pencil.PencilId !== action.pencil.PencilId)
 
         default:
             return state

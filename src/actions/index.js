@@ -10,8 +10,8 @@ const receivePencil = pencil => ({
     pencil: pencil
 })
 
-const pencilAdded = pencil => ({
-    type: 'PENCIL_ADDED',
+const pencilDeleted = pencil => ({
+    type: 'PENCIL_DELETED',
     pencil: pencil
 })
 
@@ -30,12 +30,18 @@ export const getPencil = (id) => dispatch => {
 
 export const addPencil = (pencil) => dispatch => {
     return shop.addPencil(pencil)
-        .then(pencilAdded)
+        .then(receivePencil)
         .then(dispatch);
 }
 
 export const updatePencil = (pencil) => dispatch => {
     return shop.updatePencil(pencil)
         .then(receivePencil)
+        .then(dispatch);
+}
+
+export const deletePencil = (pencil) => dispatch => {
+    return shop.deletePencil(pencil)
+        .then(pencilDeleted)
         .then(dispatch);
 }

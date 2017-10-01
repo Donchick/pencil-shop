@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getAllBuyers } from '../actions/buyers';
-import { getPencil, addPencil, updatePencil } from '../actions';
+import { getPencil, addPencil, updatePencil, deletePencil } from '../actions';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import PencilForm from '../components/PencilForm';
@@ -20,7 +20,7 @@ const mapStateToProps = (state, props) => {
 
 class PencilFormPage extends Component {
   state = {
-    pencilSaved: false
+    pencilUpdated: false
   }
 
   componentDidMount() {
@@ -46,19 +46,25 @@ class PencilFormPage extends Component {
     let saveFunc = pencil.id ? this.props.updatePencil : this.props.addPencil;
 
     saveFunc(data)
-      .then(() => {this.setState({ pencilSaved: true })});
+      .then(() => {this.setState({ pencilUpdated: true })});
+  }
+
+  deletePencil = (id) => {
+    this.props.deletePencil(id)
+      .then(() => {this.setState({ pencilUpdated: true })});
   }
 
   render() {
     return (
       <div>
         {
-          this.state.pencilSaved ?
+          this.state.pencilUpdated ?
           <Redirect to="/" /> :
           <PencilForm 
             pencil={this.props.pencil}
             buyers={this.props.buyers}
             savePencil={this.savePencil}
+            deletePencil={this.deletePencil}
           />
         }
       </div>
@@ -68,5 +74,5 @@ class PencilFormPage extends Component {
 
 export default connect(
   mapStateToProps, 
-  { getAllBuyers, getPencil, addPencil, updatePencil }
+  { getAllBuyers, getPencil, addPencil, updatePencil, deletePencil }
 )(PencilFormPage);

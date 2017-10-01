@@ -32,5 +32,11 @@ export default {
                 "Content-Type": "application/json"
             }
         }).then(res => res.json());
+    },
+    
+    deletePencil: (id) => {
+        return fetch(`/api/pencils/${id}`, {
+            method: 'DELETE'
+        }).then(res => res.json());
     }
 }
