@@ -7,7 +7,8 @@ import reducer from './reducers'
 import { getAllPencils } from './actions';
 import { createLogger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk'
+import thunk from 'redux-thunk';
+import { BrowserRouter } from 'react-router-dom'
 
 const store = createStore(
     reducer,
@@ -17,8 +18,10 @@ const store = createStore(
 );
 
 render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
+    <BrowserRouter>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </BrowserRouter>,
     document.getElementById('root')
 );

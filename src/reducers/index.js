@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import pencils from './pencils';
-import users from './users';
+import buyers from './buyers';
 
 const pencilStoreApp = combineReducers({
     pencils,
-    users
+    buyers
 });
 
 export default pencilStoreApp;

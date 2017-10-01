@@ -1,25 +1,36 @@
-/**
- * Mocking client-server processing
- */
-
-const TIMEOUT = 100;
-
 export default {
     getPencils: () => {
-        return fetch('api/pencils')
+        return fetch('/api/pencils')
             .then(res => res.json());
     },
 
-    getUsers: () => {
-        return fetch('api/buyers')
+    getBuyers: () => {
+        return fetch('/api/buyers')
             .then(res => res.json())
+    },
+
+    getPencil: (id) => {
+        return fetch(`/api/pencils/${id}`)
+            .then(res => res.json());
+    },
+
+    addPencil: (pencil) => {
+        return fetch('/api/pencils', {
+            method: 'post',
+            body: JSON.stringify(pencil),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json());
+    },
+    
+    updatePencil: (pencil) => {
+        return fetch('/api/pencils', {
+            method: 'PATCH',
+            body: JSON.stringify(pencil),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json());
     }
-    /*
-    addPencil: (name) => {
-        return new Promise((resolve, reject) => setTimeout(() => {
-            let pencil = {id: _pencils.length + 1, name};
-            resolve(pencil);
-        }, TIMEOUT))
-    }
-    */
 }
