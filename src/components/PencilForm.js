@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CheckboxGroup from './CheckboxGroup';
-import Modal from '../containers/Modal';
 
 class PencilForm extends Component {
   state = {
@@ -31,31 +30,50 @@ class PencilForm extends Component {
         }
   }
 
+  validateForm () {
+    let errors = {};
+    if (!this.state.name) {
+      errors.name = "Can't be empty";
+    }
+    if (!this.state.description) {
+      errors.description = "Can't be empty";
+    }
+    if (!this.state.price) {
+      errors.price = "Can't be empty";
+    }
+    if (!this.state.image) {
+      errors.image = "You should to load image";
+    }
+    if (this.state.selectedBuyers.length === 0) {
+      errors.selectedBuyers = "You should to choose one to many buyers";
+    }
+
+    this.setState({errors});
+
+    return Object.keys(errors).length === 0;
+  }
+
+  clearErrors (filedName) {
+    let errors = Object.assign({}, this.state.errors);
+    delete errors[filedName];
+    return errors;
+  }
+
   handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    let errors = this.clearErrors(e.target.name);
+    this.setState({ [e.target.name]: e.target.value, errors });
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { id, name, selectedBuyers, description, price, image} = this.state;
+    let isFormValid = this.validateForm();
 
-    this.props.savePencil({ id, name, selectedBuyers, description, price, image });
-    /*
-    // validation
-    let errors = {};
-    if (this.state.title === '') errors.title = "Can't be empty";
-    if (this.state.cover === '') errors.cover = "Can't be empty";
-    this.setState({ errors });
-    const isValid = Object.keys(errors).length === 0
+    if (isFormValid) {
+      const { id, name, selectedBuyers, description, price, image} = this.state;
 
-    if (isValid) {
-      const { _id, title, cover } = this.state;
-      this.setState({ loading: true });
-      this.props.saveGame({ _id, title, cover })
-        .catch((err) => err.response.json().then(({errors}) => this.setState({ errors, loading: false })));
+      this.props.savePencil({ id, name, selectedBuyers, description, price, image });
     }
-    */
   }
 
   deleteClickHandler = (e) => {
@@ -65,6 +83,7 @@ class PencilForm extends Component {
   }
 
   handleBuyersChange = (e) => {
+    let errors = this.clearErrors('selectedBuyers');
     const newSelection = e.target.value;
     let newSelectionArray;
   
@@ -74,17 +93,19 @@ class PencilForm extends Component {
       newSelectionArray = [...this.state.selectedBuyers, newSelection];
     }
   
-    this.setState({ selectedBuyers: newSelectionArray });
+    this.setState({ selectedBuyers: newSelectionArray, errors });
   }
 
   imageChangeHandler (e) {
+    let errors = this.clearErrors('image');
     let file = e.target.files[0];
     let fr = new FileReader();
     fr.onload = (() => {
         return (e) => {
             let data = e.target.result;
             this.setState({
-              image: data
+              image: data,
+              errors
             });
         }
     })();
@@ -97,7 +118,7 @@ class PencilForm extends Component {
       <form onSubmit={this.handleSubmit}>
         <h1>Add new game</h1>
 
-        <div>
+        <div className={`input-field ${!!this.state.errors.name ? 'error': ''}`}>
           <label htmlFor="name">Name</label>
           <input
             name="name"
@@ -107,7 +128,7 @@ class PencilForm extends Component {
           />
         </div>
 
-        <div>
+        <div className={`input-field ${!!this.state.errors.description ? 'error' : ''}`}>
           <label htmlFor="description">Description</label>
           <input
             name="description"
@@ -117,7 +138,7 @@ class PencilForm extends Component {
           />
         </div>
 
-        <div>
+        <div className={`input-field ${!!this.state.errors.price ? 'error' : ''}`}>
           <label htmlFor="price">Price</label>
           <input
             name="price"
@@ -127,20 +148,23 @@ class PencilForm extends Component {
           />
         </div>
 
-        
-        <label htmlFor="pencilImage">Choose pencil image:</label>
-        <input type="file" id="pencilImage" className="avatar" onChange={this.imageChangeHandler.bind(this)}/>
-        <div className="file-styled-label">
-          <img src={this.state.image} className="avatar-img"/>
+        <div className={`input-field ${!!this.state.errors.image ? 'error' : ''}`}>
+          <label htmlFor="pencilImage">Choose pencil image:</label>
+          <input type="file" id="pencilImage" className="avatar" onChange={this.imageChangeHandler.bind(this)}/>
+          <div className="file-styled-label">
+            <img src={this.state.image} className="avatar-img"/>
+          </div>
         </div>
 
         {this.state.buyers && this.state.buyers.length > 0 &&
-          <CheckboxGroup 
-            title="Pencils' buyers"
-            options={this.state.buyers.map(buyer => ({value: buyer.BuyerId, title: buyer.Name}))}
-            controlFunc={this.handleBuyersChange.bind(this)}
-            groupName="selectedBuyers"
-          />
+          <div className={`input-field ${!!this.state.errors.selectedBuyers ? 'error' : ''}`}>
+            <CheckboxGroup 
+              title="Pencils' buyers"
+              options={this.state.buyers.map(buyer => ({value: buyer.BuyerId, title: buyer.Name}))}
+              controlFunc={this.handleBuyersChange.bind(this)}
+              groupName="selectedBuyers"
+            />
+          </div>
         }
         <div className="field">
           <button className="ui primary button">Save</button>
@@ -149,7 +173,6 @@ class PencilForm extends Component {
     );
     return (
       <div>
-        <Modal ref={(modal) => { this.modal = modal; }}/>
         { form }
 
         {this.state.id &&
