@@ -9,17 +9,27 @@ const mapStateToProps = (state) => ({
 });
 
 class Home extends Component {
+    state = {
+        pencils: this.props.pencils || []
+    }
+
     componentDidMount() {
         this.props.getAllPencils();
+    }
+
+    componentWillReceiveProps(nextState) {
+        if (nextState.pencils) {
+            this.setState({pencils: nextState.pencils});
+        }
     }
 
     render () {
        return <div className="container">
             <div className="pencil-form-manager row">
-                <PencilFormManager pencils={this.props.pencils} classList="page-top-element"/>
+                <PencilFormManager pencils={this.state.pencils} classList="page-top-element"/>
             </div>
             <div className="pencils-list row">
-                <PencilsList pencils={this.props.pencils}/>
+                <PencilsList pencils={this.state.pencils}/>
             </div>
         </div>
     }
