@@ -18,11 +18,13 @@ class PencilDetails extends Component {
   }
 
   render () {
-    return <div>
-      <img src={this.state.image} />
-      <p>{this.state.name}</p>
-      <p>{this.state.description}</p>
-      <p>$ {this.state.price}</p>
+    return <div className="container pencil-details-container">
+      <img src={this.state.image} className="col-xs-6 pencil-image"/>
+      <div className="col-xs-6">
+        <p className="name">{this.state.name}</p>
+        <p>{this.state.description}</p>
+      </div>
+      <p className="price">$ {this.state.price}</p>
     </div>
   }
 }

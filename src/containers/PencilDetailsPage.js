@@ -21,7 +21,9 @@ class PencilDetailsPage extends Component {
   render() {
     return (
       <div>
-        <Link to="/">Back</Link>
+        <ol className="container breadcrumb">
+          <li><Link to="/">Back</Link></li>
+        </ol>
         <PencilDeltails
             pencil={this.props.pencil}
         />

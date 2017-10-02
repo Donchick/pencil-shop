@@ -4,6 +4,40 @@ body {
   font-family: sans-serif;
 }
 
+.breadcrumb,
+.pencil-details-container {
+  background: #f7f7f7;
+  border-radius: 10px;
+  font-size: 18px;
+  color: black;
+}
+
+.pencil-details-container {
+  position: relative;
+  height: 500px;
+}
+
+.breadcrumb {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.pencil-details-container .price {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.pencil-details-container .name {
+  font-size: 20px;
+}
+
+.pencil-details-container .pencil-image {
+  max-height: 500px;
+}
+
 .pencil-form-manager {
   height: 100px;
   text-align: right;
