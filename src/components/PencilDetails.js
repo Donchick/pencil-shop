@@ -28,7 +28,7 @@ class PencilDetails extends Component {
       <img src={image} className="col-xs-6 pencil-image" alt="pencil"/>
       <div className="col-xs-6">
         <p className="name">{name}</p>
-        <p>{description}</p>
+        <p className="description">{description}</p>
       </div>
       <p className="price">$ {price}</p>
     </div>

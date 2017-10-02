@@ -151,6 +151,11 @@ img{
   font-size: 20px;
 }
 
+.pencil-details-container .description{
+  max-height: 350px;
+  overflow: auto;
+}
+
 .pencil-details-container .pencil-image {
   max-height: 500px;
 }
