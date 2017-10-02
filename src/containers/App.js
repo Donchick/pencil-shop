@@ -6,7 +6,8 @@ import PencilDetailsPage from './PencilDetailsPage'
 
 
 const App = (props) => {
-    return <div>
+    return <div className="container">
+        <div className="welcome-top-element">Welcome to Jim's pencil store!</div>
         <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/pencils/new" component={PencilFormPage} />

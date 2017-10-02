@@ -200,7 +200,7 @@ class PencilForm extends Component {
       </form>
     );
     return (
-      <div className="container">
+      <div>
         <p className="page-top-element text-capitalize">{this.state.id ? 'Edit pencil' : 'Add new pencil'}</p>
         <div className="pencil-form">
           { form }

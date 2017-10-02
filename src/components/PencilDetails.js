@@ -24,7 +24,7 @@ class PencilDetails extends Component {
   render () {
     let { image, name, description, price} = this.state;
 
-    return <div className="container pencil-details-container">
+    return <div className="pencil-details-container">
       <img src={image} className="col-xs-6 pencil-image" alt="pencil"/>
       <div className="col-xs-6">
         <p className="name">{name}</p>

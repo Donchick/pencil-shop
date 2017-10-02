@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const PencilsList = (props) => {
+const PencilCard = (props) => {
   let { PencilId, Image, Name, Price } = props.pencil;
 
   return <div className="col-xs-4">
@@ -16,11 +16,11 @@ const PencilsList = (props) => {
   </div>
 }
 
-PencilsList.propTypes = {  
+PencilCard.propTypes = {  
   PencilId: PropTypes.number,
   Image: PropTypes.string,
   Name: PropTypes.string,
   Price: PropTypes.number
 };
 
-export default PencilsList;
+export default PencilCard;

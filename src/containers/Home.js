@@ -28,7 +28,7 @@ class Home extends Component {
     }
 
     render () {
-       return <div className="container">
+       return <div>
             <div className="pencil-form-manager row">
                 <PencilManagerMenu pencils={this.state.pencils} classList="page-top-element"/>
             </div>

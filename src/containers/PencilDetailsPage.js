@@ -23,7 +23,7 @@ class PencilDetailsPage extends Component {
   render() {
     return (
       <div>
-        <ol className="container breadcrumb page-top-element">
+        <ol className="breadcrumb page-top-element">
           <li><Link to="/">Back</Link></li>
         </ol>
         <PencilDeltails

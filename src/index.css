@@ -109,20 +109,29 @@ img{
 }
 
 
+.container .welcome-top-element{
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  font-family: fantasy;
+}
+
 .page-top-element,
+.welcome-top-element,
 .pencil-details-container{
   background: #f7f7f7;
   border-radius: 10px;
   font-size: 18px;
-  color: black;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;    
+  color: black;   
   padding: 8px 15px;
 }
 
 .pencil-details-container {
   position: relative;
   height: 500px;
+  border-radius: 10px;
 }
 
 .pencil-details-container .price {
