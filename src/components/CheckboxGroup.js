@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CheckboxGroup = (props) => ( 
-  <div>
+const CheckboxGroup = (props) => { 
+  return <div>
     <label>{props.title}</label>
     { props.errors ?
      <p className="error-message">{props.errors}</p>
@@ -24,7 +24,7 @@ const CheckboxGroup = (props) => (
       })}
     </div>
   </div>
-);
+};
 
 CheckboxGroup.propTypes = {  
   title: PropTypes.string.isRequired,
