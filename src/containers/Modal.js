@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 
 class Modal extends Component {
-    state = {
-        visible: false,
-        cancelTitle: this.props.cancelTitle || 'Cancel',
-        submitButton: this.props.submitButton || 'Submit',
-        title: this.props.title || '',
-        content: ''
+    constructor (props) {
+        super(...arguments);
+        this.state = {
+            visible: false,
+            cancelTitle: props.cancelTitle || 'Cancel',
+            submitButton: props.submitButton || 'Submit',
+            title: props.title || '',
+            content: ''
+        }
     }
 
     close () {

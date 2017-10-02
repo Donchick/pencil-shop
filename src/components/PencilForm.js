@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import CheckboxGroup from './CheckboxGroup';
 
 class PencilForm extends Component {
-  state = {
-    id: this.props.pencil ? this.props.pencil.PencilId : null,
-    name: this.props.pencil ? this.props.pencil.Name : '',
-    description: this.props.pencil ? this.props.pencil.Description : '',
-    image: this.props.pencil ? this.props.pencil.Image : null,
-    price: this.props.pencil ? this.props.pencil.Price : '',
-    selectedBuyers: this.props.pencil && this.props.pencil.PencilId ? this.props.pencil.BuyersIds : [],
-    errors: {},
-    loading: false
+  constructor (props) {
+    super(...arguments);
+    this.state = {
+      id: props.pencil ? props.pencil.PencilId : null,
+      name: props.pencil ? props.pencil.Name : '',
+      description: props.pencil ? props.pencil.Description : '',
+      image: props.pencil ? props.pencil.Image : null,
+      price: props.pencil ? props.pencil.Price : '',
+      selectedBuyers: props.pencil && props.pencil.PencilId ? props.pencil.BuyersIds : [],
+      errors: {}
+    }
   }
 
   componentWillReceiveProps = (nextProps) => {

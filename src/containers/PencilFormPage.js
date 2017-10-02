@@ -20,8 +20,11 @@ const mapStateToProps = (state, props) => {
 };
 
 class PencilFormPage extends Component {
-  state = {
-    pencilUpdated: false
+  constructor (props) {
+    super(...arguments);
+    this.state = {
+      pencilUpdated: false
+    }
   }
 
   componentDidMount() {

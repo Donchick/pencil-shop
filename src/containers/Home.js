@@ -10,8 +10,11 @@ const mapStateToProps = (state) => ({
 });
 
 class Home extends Component {
-    state = {
-        pencils: this.props.pencils || []
+    constructor (props) {
+        super(...arguments);
+        this.state = {
+            pencils: props.pencils || []
+        };
     }
 
     componentDidMount() {

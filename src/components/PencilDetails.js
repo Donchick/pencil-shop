@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 
 class PencilDetails extends Component {
-  state = {
-    name: this.props.pencil ? this.props.pencil.Name : '',
-    description: this.props.pencil ? this.props.pencil.Description : '',
-    image: this.props.pencil ? this.props.pencil.Image : null,
-    price: this.props.pencil ? this.props.pencil.Price : ''
+  constructor(props) {
+    super(...arguments);
+    this.state = {
+      name: props.pencil ? props.pencil.Name : '',
+      description: props.pencil ? props.pencil.Description : '',
+      image: props.pencil ? props.pencil.Image : null,
+      price: props.pencil ? props.pencil.Price : ''
+    }
   }
 
   componentWillReceiveProps = (nextProps) => {
