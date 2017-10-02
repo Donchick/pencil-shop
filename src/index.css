@@ -4,22 +4,62 @@ body {
   font-family: sans-serif;
 }
 
-.breadcrumb,
-.pencil-details-container {
+.pencil-form {
+  height: 700px;
+  background: #f7f7f7;
+  border-radius: 10px;
+  padding: 15px;
+  position: relative;
+}
+
+.pencil-form .error-message{
+  color: #a94442;
+}
+
+.pencil-form .input-field {
+  margin: 10px 0;
+}
+
+.pencil-form .form-control.description{
+  resize: none;
+  height: 400px;
+}
+
+.pencil-form .pencil-image-preview{
+  padding: 15px 0;
+  max-height: 464px;
+}
+
+.pencil-form .pencil-image-input{
+  display: none;
+}
+
+.pencil-form .save-btn{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.pencil-form .delete-btn{
+  position: absolute;
+  bottom: 20px;
+  right: 120px;
+}
+
+.page-top-element,
+.pencil-details-container{
   background: #f7f7f7;
   border-radius: 10px;
   font-size: 18px;
   color: black;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;    
+  padding: 8px 15px;
 }
 
 .pencil-details-container {
   position: relative;
   height: 500px;
-}
-
-.breadcrumb {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
 }
 
 .pencil-details-container .price {

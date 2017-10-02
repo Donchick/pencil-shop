@@ -3,18 +3,19 @@ import React, { Component } from 'react';
 const CheckboxGroup = (props) => ( 
   <div>
     <label>{props.title}</label>
+    {props.errors && <p className="error-message">{props.errors}</p> || ''}
     <div>
       {props.options.map(opt => {
         return (
-            <label key={opt.value}>
-              <input
-                name={props.groupName}
-                onChange={props.controlFunc}
-                value={opt.value}
-                type="checkbox" 
-              />
-              {opt.title}
-            </label>
+          <label className="checkbox-inline" key={opt.value}>
+            <input
+              name={props.groupName}
+              onChange={props.controlFunc}
+              value={opt.value}
+              type="checkbox" 
+            />
+          {opt.title}
+          </label>
         );
       })}
     </div>

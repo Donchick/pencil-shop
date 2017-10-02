@@ -115,69 +115,80 @@ class PencilForm extends Component {
 
   render() {
     const form = (
-      <form onSubmit={this.handleSubmit}>
-        <h1>Add new game</h1>
-
-        <div className={`input-field ${!!this.state.errors.name ? 'error': ''}`}>
-          <label htmlFor="name">Name</label>
-          <input
-            name="name"
-            value={this.state.name}
-            onChange={this.handleChange.bind(this)}
-            id="name"
-          />
-        </div>
-
-        <div className={`input-field ${!!this.state.errors.description ? 'error' : ''}`}>
-          <label htmlFor="description">Description</label>
-          <input
-            name="description"
-            value={this.state.description}
-            onChange={this.handleChange.bind(this)}
-            id="description"
-          />
-        </div>
-
-        <div className={`input-field ${!!this.state.errors.price ? 'error' : ''}`}>
-          <label htmlFor="price">Price</label>
-          <input
-            name="price"
-            value={this.state.price}
-            onChange={this.handleChange.bind(this)}
-            id="[price]"
-          />
-        </div>
-
-        <div className={`input-field ${!!this.state.errors.image ? 'error' : ''}`}>
-          <label htmlFor="pencilImage">Choose pencil image:</label>
-          <input type="file" id="pencilImage" className="avatar" onChange={this.imageChangeHandler.bind(this)}/>
-          <div className="file-styled-label">
-            <img src={this.state.image} className="avatar-img"/>
-          </div>
-        </div>
-
-        {this.state.buyers && this.state.buyers.length > 0 &&
-          <div className={`input-field ${!!this.state.errors.selectedBuyers ? 'error' : ''}`}>
-            <CheckboxGroup 
-              title="Pencils' buyers"
-              options={this.state.buyers.map(buyer => ({value: buyer.BuyerId, title: buyer.Name}))}
-              controlFunc={this.handleBuyersChange.bind(this)}
-              groupName="selectedBuyers"
+      <form onSubmit={this.handleSubmit} className="row">
+        <div className="col-xs-6">
+          <div className={`input-field ${!!this.state.errors.name ? 'has-error': ''}`}>
+            <label htmlFor="name">Name</label>
+            {this.state.errors.name && <p className="error-message">{this.state.errors.name}</p> || ''}
+            <input
+              name="name"
+              value={this.state.name}
+              onChange={this.handleChange.bind(this)}
+              id="name"
+              className="form-control"
             />
           </div>
-        }
-        <div className="field">
-          <button className="ui primary button">Save</button>
+
+          <div className={`input-field ${!!this.state.errors.description ? 'has-error' : ''}`}>
+            <label htmlFor="description">Description</label>
+            {this.state.errors.description && <p className="error-message">{this.state.errors.description}</p> || ''}
+            <textarea
+              name="description"
+              value={this.state.description}
+              onChange={this.handleChange.bind(this)}
+              id="description"
+              className="form-control description"
+            />
+          </div>
+          {this.state.buyers && this.state.buyers.length > 0 &&
+            <div className={`input-field ${!!this.state.errors.selectedBuyers ? 'has-error' : ''}`}>
+              <CheckboxGroup 
+                title="Pencils' buyers"
+                options={this.state.buyers.map(buyer => ({value: buyer.BuyerId, title: buyer.Name}))}
+                controlFunc={this.handleBuyersChange.bind(this)}
+                groupName="selectedBuyers"
+                checkboxClass="form-control"
+                errors={this.state.errors.selectedBuyers}
+              />
+            </div>
+          }
         </div>
+
+        <div className="col-xs-6">
+          <div className={`input-field row ${!!this.state.errors.image ? 'has-error' : ''}`}>
+            {this.state.errors.image && <p className="error-message">{this.state.errors.image}</p> || ''}
+            <label htmlFor="pencilImage" className="btn btn-default btn-file text-capitalize">
+                {this.state.image ? 'Change pencil image' : 'Add pencil image'} <input type="file" id="pencilImage" className="pencil-image-input" onChange={this.imageChangeHandler.bind(this)}/>
+            </label>
+            <img src={this.state.image} className="pencil-image-preview col-xs-12"/>
+          </div>
+
+          <div className={`input-field ${!!this.state.errors.price ? 'has-error' : ''}`}>
+            <label htmlFor="price">Price ($)</label>
+            {this.state.errors.price && <p className="error-message">{this.state.errors.price}</p> || ''}
+            <input
+              name="price"
+              value={this.state.price}
+              onChange={this.handleChange.bind(this)}
+              id="price"
+              className="form-control"
+            />
+          </div>
+        </div>
+
+        <button className="save-btn btn btn-primary btn-lg">Save</button>
+
+        {this.state.id &&
+          <button className="delete-btn btn btn-danger btn-lg" onClick={this.deleteClickHandler.bind(this)}>Delete</button>
+        }
       </form>
     );
     return (
-      <div>
-        { form }
-
-        {this.state.id &&
-          <button className="ui primary button" onClick={this.deleteClickHandler.bind(this)}>Delete</button>
-        }
+      <div className="container">
+        <p className="page-top-element text-capitalize">{this.state.id ? 'Edit pencil' : 'Add new pencil'}</p>
+        <div className="pencil-form">
+          { form }
+        </div>
       </div>
     );
   }
