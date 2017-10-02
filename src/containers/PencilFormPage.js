@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getAllBuyers } from '../actions/buyers';
-import { getPencil, addPencil, updatePencil, deletePencil } from '../actions';
+import { getPencil, addPencil, updatePencil, deletePencil } from '../actions/pencils';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import PencilForm from '../components/PencilForm';

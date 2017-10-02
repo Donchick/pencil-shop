@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import PencilsList from '../components/PencilsList';
 import PencilFormManager from '../components/PencilFormManager';
-import { getAllPencils } from '../actions';
+import { getAllPencils } from '../actions/pencils';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => ({

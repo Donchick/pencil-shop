@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getPencil } from '../actions';
+import { getPencil } from '../actions/pencils';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PencilDeltails from '../components/PencilDetails';
