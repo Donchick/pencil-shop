@@ -29,7 +29,7 @@ class Home extends Component {
 
     render () {
        return <div>
-            <div className="pencil-form-manager row">
+            <div className="pencil-manager-menu row">
                 <PencilManagerMenu pencils={this.state.pencils} classList="page-top-element"/>
             </div>
             <div className="pencils-list row">

@@ -8,7 +8,7 @@ img{
   text-indent:-9999px
 }
 
-
+/*modal dialog styles*/
 .modal-overlay.visible{
   display: "block";
 }
@@ -42,30 +42,32 @@ img{
 }
 
 
-.pencil-form-manager {
+/*pencil manager menu styles*/
+.pencil-manager-menu {
   height: 100px;
   text-align: right;
   padding: 0 15px;
   vertical-align: middle;
 }
 
-.pencil-form-manager .menu {
+.pencil-manager-menu .menu {
   height: 100%;
   padding: 25px 0;
 }
 
-.pencil-form-manager .menu-element {
+.pencil-manager-menu .menu-element {
   width: 200px;
   padding: 0 15px;
   font-size: 16px;
   display: inline-block;
 }
 
-.pencil-form-manager .edit-pencil-form .menu-element {
+.pencil-manager-menu .edit-pencil-form .menu-element {
   width: auto;
 }
 
 
+/*pencil form styles*/
 .pencil-form {
   height: 700px;
   background: #f7f7f7;
@@ -109,6 +111,7 @@ img{
 }
 
 
+/*home page styles*/
 .container .welcome-top-element{
   font-size: 24px;
   text-align: center;
@@ -118,6 +121,8 @@ img{
   font-family: fantasy;
 }
 
+
+/*pencil details page styles*/
 .page-top-element,
 .welcome-top-element,
 .pencil-details-container{
@@ -151,6 +156,7 @@ img{
 }
 
 
+/*pencil card styles*/
 .pencil-card {
   height: 300px;
   margin: 15px;
