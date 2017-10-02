@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {Navigation} from 'react-router';
 import {withRouter} from "react-router-dom";
 
 class App extends Component {
@@ -41,7 +40,7 @@ class App extends Component {
                         );
                     })}
                 </select>
-                <a href="#" onClick={this.editPencilLinkHandler.bind(this)} className="menu-element text-capitalize">Edit Pencil</a>
+                <button onClick={this.editPencilLinkHandler.bind(this)} className="menu-element text-capitalize btn-link">Edit Pencil</button>
             </div>
         </div>
     }

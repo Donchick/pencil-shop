@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import PencilsList from '../components/PencilsList';
 import PencilFormManager from '../components/PencilFormManager';
 import { getAllPencils } from '../actions';
@@ -36,8 +37,8 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-    pencils: React.PropTypes.array.isRequired,
-    getAllPencils: React.PropTypes.func.isRequired
+    pencils: PropTypes.array.isRequired,
+    getAllPencils: PropTypes.func.isRequired
 }
 
 export default connect(

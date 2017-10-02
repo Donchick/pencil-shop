@@ -9,7 +9,7 @@ import Modal from '../containers/Modal';
 const mapStateToProps = (state, props) => {
   if (props.match.params._id) {
     return {
-      pencil: state.pencils.find(pencil => pencil.PencilId == props.match.params._id)
+      pencil: state.pencils.find(pencil => pencil.PencilId * 1 === props.match.params._id * 1)
     }
   } else {
     return {

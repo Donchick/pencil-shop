@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux'
 import PencilCard from './PencilCard';
 
 class PencilsList extends Component {

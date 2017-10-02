@@ -119,7 +119,10 @@ class PencilForm extends Component {
         <div className="col-xs-6">
           <div className={`input-field ${!!this.state.errors.name ? 'has-error': ''}`}>
             <label htmlFor="name">Name</label>
-            {this.state.errors.name && <p className="error-message">{this.state.errors.name}</p> || ''}
+            { this.state.errors.name ?
+              <p className="error-message">{this.state.errors.name}</p>
+              : ''
+             }
             <input
               name="name"
               value={this.state.name}
@@ -131,7 +134,10 @@ class PencilForm extends Component {
 
           <div className={`input-field ${!!this.state.errors.description ? 'has-error' : ''}`}>
             <label htmlFor="description">Description</label>
-            {this.state.errors.description && <p className="error-message">{this.state.errors.description}</p> || ''}
+            { this.state.errors.description ?
+              <p className="error-message">{this.state.errors.description}</p>
+              : ''
+            }
             <textarea
               name="description"
               value={this.state.description}
@@ -156,16 +162,22 @@ class PencilForm extends Component {
 
         <div className="col-xs-6">
           <div className={`input-field row ${!!this.state.errors.image ? 'has-error' : ''}`}>
-            {this.state.errors.image && <p className="error-message">{this.state.errors.image}</p> || ''}
+            { this.state.errors.image ?
+              <p className="error-message">{this.state.errors.image}</p>
+              : ''
+            }
             <label htmlFor="pencilImage" className="btn btn-default btn-file text-capitalize">
                 {this.state.image ? 'Change pencil image' : 'Add pencil image'} <input type="file" id="pencilImage" className="pencil-image-input" onChange={this.imageChangeHandler.bind(this)}/>
             </label>
-            <img src={this.state.image} className="pencil-image-preview col-xs-12"/>
+            <img src={this.state.image} className="pencil-image-preview col-xs-12" alt="pencil"/>
           </div>
 
           <div className={`input-field ${!!this.state.errors.price ? 'has-error' : ''}`}>
             <label htmlFor="price">Price ($)</label>
-            {this.state.errors.price && <p className="error-message">{this.state.errors.price}</p> || ''}
+            { this.state.errors.price ?
+              <p className="error-message">{this.state.errors.price}</p>
+              : ''
+            }
             <input
               name="price"
               value={this.state.price}

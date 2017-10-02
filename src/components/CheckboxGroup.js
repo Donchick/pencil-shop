@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const CheckboxGroup = (props) => ( 
   <div>
     <label>{props.title}</label>
-    {props.errors && <p className="error-message">{props.errors}</p> || ''}
+    { props.errors ?
+     <p className="error-message">{props.errors}</p>
+      : ''
+    }
     <div>
       {props.options.map(opt => {
         return (
@@ -23,11 +27,11 @@ const CheckboxGroup = (props) => (
 );
 
 CheckboxGroup.propTypes = {  
-  title: React.PropTypes.string.isRequired,
-  groupName: React.PropTypes.string.isRequired,
-  options: React.PropTypes.array.isRequired,
-  selectedOptions: React.PropTypes.array,
-  controlFunc: React.PropTypes.func.isRequired
+  title: PropTypes.string.isRequired,
+  groupName: PropTypes.string.isRequired,
+  options: PropTypes.array.isRequired,
+  selectedOptions: PropTypes.array,
+  controlFunc: PropTypes.func.isRequired
 };
 
 export default CheckboxGroup;  

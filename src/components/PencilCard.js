@@ -6,7 +6,7 @@ class PencilsList extends Component {
     return <div className="col-xs-4">
       <div className="pencil-card thumbnail">
         <Link to={`/pencil/details/${this.props.pencil.PencilId}`} className="pencil-link">
-          <img src={this.props.pencil.Image} className="pencil-image"/>
+          <img src={this.props.pencil.Image} className="pencil-image" alt="pencil"/>
           <p className="pencil-name caption text-capitalize" onClick="">{this.props.pencil.Name}</p>
         </Link>
         <p className="pencil-price">$ {this.props.pencil.Price}</p>

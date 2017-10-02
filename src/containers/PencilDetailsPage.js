@@ -6,9 +6,11 @@ import PencilDeltails from '../components/PencilDetails';
 
 const mapStateToProps = (state, props) => ({
   pencil: state.pencils.find(pencil => {
-    if (pencil.PencilId == props.match.params._id) {
+    if (pencil.PencilId * 1 === props.match.params._id * 1) {
       return pencil;
     }
+    
+    return undefined;
   })
 })
     
