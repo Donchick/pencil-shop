@@ -26,21 +26,23 @@ class App extends Component {
     }
 
     render () {
-        return <div>
-            <Link to="/pencils/new">Add Pencil</Link>
-            <select
-                name="selectList"
-                className="form-select"
-                onChange={this.handleSelectedPencil.bind(this)}>
-                {this.props.pencils.map(pencil => {
-                    return (
-                    <option
-                        key={pencil.PencilId}
-                        value={pencil.PencilId}>{pencil.Name}</option>
-                    );
-                })}
-            </select>
-            <a href="#" onClick={this.editPencilLinkHandler.bind(this)}>Edit Pencil</a>
+        return <div className="menu">
+            <Link to="/pencils/new" className="menu-element text-capitalize">Add New Pencil</Link>
+            <div className="edit-pencil-form">
+                <select
+                    name="selectList"
+                    className="menu-element text-capitalize"
+                    onChange={this.handleSelectedPencil.bind(this)}>
+                    {this.props.pencils.map(pencil => {
+                        return (
+                        <option
+                            key={pencil.PencilId}
+                            value={pencil.PencilId}>{pencil.Name}</option>
+                        );
+                    })}
+                </select>
+                <a href="#" onClick={this.editPencilLinkHandler.bind(this)} className="menu-element text-capitalize">Edit Pencil</a>
+            </div>
         </div>
     }
 }

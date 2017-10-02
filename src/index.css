@@ -3,3 +3,61 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.pencil-form-manager {
+  height: 100px;
+  text-align: right;
+  padding: 0 15px;
+  vertical-align: middle;
+}
+
+.pencil-form-manager .menu {
+  height: 100%;
+  border-radius: 5px;
+  background: #f7f7f7;
+  padding: 25px 0;
+}
+
+.pencil-form-manager .menu-element {
+  width: 200px;
+  padding: 0 15px;
+  font-size: 16px;
+  display: inline-block;
+}
+
+.pencil-form-manager .edit-pencil-form .menu-element {
+  width: auto;
+}
+
+.pencil-card {
+  height: 300px;
+  margin: 15px;
+  position: relative;
+}
+
+.pencil-card .link-container {
+  display: block;
+}
+
+.pencil-card .pencil-link {
+  display: block;
+  height: 240px;
+}
+
+.pencil-card .pencil-image {
+  height: 200px;
+}
+
+.pencil-card .pencil-name {
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.pencil-card .pencil-price {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  margin: 0;
+  font-size: 18px;
+}

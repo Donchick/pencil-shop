@@ -4,11 +4,11 @@ import PencilCard from './PencilCard';
 
 class PencilsList extends Component {
     render() {
-        return <ul>
+        return <div className="row">
             {this.props.pencils.map(pencil =>
                 <PencilCard pencil={pencil} key={pencil.PencilId} />
             )}
-        </ul>
+        </div>
     }
 }
 

@@ -15,13 +15,13 @@ class Home extends Component {
 
     render () {
        return <div className="container">
-            <div className="pencils-list">
-                <PencilsList pencils={this.props.pencils}/>
-            </div>
-            <div className="pencil-form-manager">
+            <div className="pencil-form-manager row">
                 <PencilFormManager pencils={this.props.pencils}/>
             </div>
-       </div>
+            <div className="pencils-list row">
+                <PencilsList pencils={this.props.pencils}/>
+            </div>
+        </div>
     }
 }
 
