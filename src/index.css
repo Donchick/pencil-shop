@@ -4,6 +4,11 @@ body {
   font-family: sans-serif;
 }
 
+img{
+  text-indent:-9999px
+}
+
+
 .modal-overlay.visible{
   display: "block";
 }
@@ -35,6 +40,31 @@ body {
 .modal-btn-section .cancel-btn {
   right: 100px;
 }
+
+
+.pencil-form-manager {
+  height: 100px;
+  text-align: right;
+  padding: 0 15px;
+  vertical-align: middle;
+}
+
+.pencil-form-manager .menu {
+  height: 100%;
+  padding: 25px 0;
+}
+
+.pencil-form-manager .menu-element {
+  width: 200px;
+  padding: 0 15px;
+  font-size: 16px;
+  display: inline-block;
+}
+
+.pencil-form-manager .edit-pencil-form .menu-element {
+  width: auto;
+}
+
 
 .pencil-form {
   height: 700px;
@@ -78,6 +108,7 @@ body {
   right: 120px;
 }
 
+
 .page-top-element,
 .pencil-details-container{
   background: #f7f7f7;
@@ -110,28 +141,6 @@ body {
   max-height: 500px;
 }
 
-.pencil-form-manager {
-  height: 100px;
-  text-align: right;
-  padding: 0 15px;
-  vertical-align: middle;
-}
-
-.pencil-form-manager .menu {
-  height: 100%;
-  padding: 25px 0;
-}
-
-.pencil-form-manager .menu-element {
-  width: 200px;
-  padding: 0 15px;
-  font-size: 16px;
-  display: inline-block;
-}
-
-.pencil-form-manager .edit-pencil-form .menu-element {
-  width: auto;
-}
 
 .pencil-card {
   height: 300px;

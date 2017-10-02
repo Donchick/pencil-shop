@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Modal extends Component {
     constructor (props) {
@@ -6,7 +7,7 @@ class Modal extends Component {
         this.state = {
             visible: false,
             cancelTitle: props.cancelTitle || 'Cancel',
-            submitButton: props.submitButton || 'Submit',
+            submitTitle: props.submitTitle || 'Submit',
             title: props.title || '',
             content: ''
         }
@@ -39,14 +40,16 @@ class Modal extends Component {
     }
 
     render () {
-        var modalOverlayClass = this.state.visible ? "visible" : "hidden";
-        var backdrop = this.state.visible ? (
+        let { title, cancelTitle, submitTitle, content } = this.state;
+
+        let modalOverlayClass = this.state.visible ? "visible" : "hidden";
+        let backdrop = this.state.visible ? (
             <div className="modal-backdrop fade in" onClick={this.close.bind(this)} />
         ) : null;
 
-        var title = this.state.title ? (
+        let titleElement = title ? (
             <div className="modal-header">
-                <h4 className="modal-title">{this.state.title}</h4>
+                <h4 className="modal-title">{title}</h4>
             </div>
         ) : null;
 
@@ -55,23 +58,29 @@ class Modal extends Component {
                 {backdrop}
                 <div className="modal-dialog">
                     <div className="modal-content">
-                        <span className="text-capitalize">{title}</span>
-                        {this.state.content &&
+                        <span className="text-capitalize">{titleElement}</span>
+                        {content &&
                             <div className="modal-body">
-                                {this.state.content}
+                                {content}
                             </div>
                         }
                         <div className="modal-btn-section">
                             <button type="button" className="cancel-btn btn btn-default" 
-                                                onClick={this.close.bind(this)}>{this.state.cancelTitle}</button>
+                                                onClick={this.close.bind(this)}>{cancelTitle}</button>
                             <button type="button" className="submit-btn btn btn-primary" 
-                                                onClick={this.submit.bind(this)}>{this.state.submitButton}</button>
+                                                onClick={this.submit.bind(this)}>{submitTitle}</button>
                         </div>
                     </div>
                 </div>
             </div>
         );
     }
+}
+
+Modal.propTypes = {
+    cancelTitle: PropTypes.string,
+    submitTitle: PropTypes.string,
+    title: PropTypes.string
 }
 
 export default Modal;

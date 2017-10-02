@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import PencilsList from '../components/PencilsList';
-import PencilFormManager from '../components/PencilFormManager';
+import PencilManagerMenu from '../components/PencilManagerMenu';
 import { getAllPencils } from '../actions/pencils';
 import { connect } from 'react-redux';
 
@@ -30,7 +30,7 @@ class Home extends Component {
     render () {
        return <div className="container">
             <div className="pencil-form-manager row">
-                <PencilFormManager pencils={this.state.pencils} classList="page-top-element"/>
+                <PencilManagerMenu pencils={this.state.pencils} classList="page-top-element"/>
             </div>
             <div className="pencils-list row">
                 <PencilsList pencils={this.state.pencils}/>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class PencilDetails extends Component {
   constructor(props) {
@@ -21,15 +22,24 @@ class PencilDetails extends Component {
   }
 
   render () {
+    let { image, name, description, price} = this.state;
+
     return <div className="container pencil-details-container">
-      <img src={this.state.image} className="col-xs-6 pencil-image" alt="pencil"/>
+      <img src={image} className="col-xs-6 pencil-image" alt="pencil"/>
       <div className="col-xs-6">
-        <p className="name">{this.state.name}</p>
-        <p>{this.state.description}</p>
+        <p className="name">{name}</p>
+        <p>{description}</p>
       </div>
-      <p className="price">$ {this.state.price}</p>
+      <p className="price">$ {price}</p>
     </div>
   }
 }
+
+PencilDetails.propTypes = {  
+  Image: PropTypes.string,
+  Name: PropTypes.string,
+  Description: PropTypes.string,
+  Price: PropTypes.number
+};
 
 export default PencilDetails;  

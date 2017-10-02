@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const PencilsList = (props) => {
@@ -14,5 +15,12 @@ const PencilsList = (props) => {
     </div>
   </div>
 }
+
+PencilsList.propTypes = {  
+  PencilId: PropTypes.number,
+  Image: PropTypes.string,
+  Name: PropTypes.string,
+  Price: PropTypes.number
+};
 
 export default PencilsList;

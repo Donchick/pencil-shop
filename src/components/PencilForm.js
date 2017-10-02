@@ -16,38 +16,40 @@ class PencilForm extends Component {
   }
 
   componentWillReceiveProps = (nextProps) => {
-        if (nextProps.pencil) {
-            this.setState({
-              id: nextProps.pencil.PencilId,
-              name: nextProps.pencil.Name,
-              description: nextProps.pencil.Description,
-              image: nextProps.pencil.Image,
-              price: nextProps.pencil.Price,
-              selectedBuyers: nextProps.pencil.BuyersIds
-            });
-        } else if (nextProps.buyers) {
-            this.setState({
-                buyers: nextProps.buyers
-            });
-        }
+    if (nextProps.pencil) {
+        this.setState({
+          id: nextProps.pencil.PencilId,
+          name: nextProps.pencil.Name,
+          description: nextProps.pencil.Description,
+          image: nextProps.pencil.Image,
+          price: nextProps.pencil.Price,
+          selectedBuyers: nextProps.pencil.BuyersIds
+        });
+    } else if (nextProps.buyers) {
+        this.setState({
+            buyers: nextProps.buyers
+        });
+    }
   }
 
   validateForm () {
+    let orgiginalErrorMsg = "Can't be empty!";
+
     let errors = {};
     if (!this.state.name) {
-      errors.name = "Can't be empty";
+      errors.name = orgiginalErrorMsg;
     }
     if (!this.state.description) {
-      errors.description = "Can't be empty";
+      errors.description = orgiginalErrorMsg;
     }
     if (!this.state.price) {
-      errors.price = "Can't be empty";
+      errors.price = orgiginalErrorMsg;
     }
     if (!this.state.image) {
-      errors.image = "You should to load image";
+      errors.image = "You should to load image!";
     }
     if (this.state.selectedBuyers.length === 0) {
-      errors.selectedBuyers = "You should to choose one to many buyers";
+      errors.selectedBuyers = "You should to choose one to many buyers!";
     }
 
     this.setState({errors});
@@ -61,12 +63,12 @@ class PencilForm extends Component {
     return errors;
   }
 
-  handleChange = (e) => {
+  changeHandler = (e) => {
     let errors = this.clearErrors(e.target.name);
     this.setState({ [e.target.name]: e.target.value, errors });
   }
 
-  handleSubmit = (e) => {
+  submitHandler = (e) => {
     e.preventDefault();
 
     let isFormValid = this.validateForm();
@@ -84,7 +86,7 @@ class PencilForm extends Component {
     this.props.deletePencil(this.state.id);
   }
 
-  handleBuyersChange = (e) => {
+  buyersChangeHandler = (e) => {
     let errors = this.clearErrors('selectedBuyers');
     const newSelection = e.target.value;
     let newSelectionArray;
@@ -117,7 +119,7 @@ class PencilForm extends Component {
 
   render() {
     const form = (
-      <form onSubmit={this.handleSubmit} className="row">
+      <form onSubmit={this.submitHandler} className="row">
         <div className="col-xs-6">
           <div className={`input-field ${!!this.state.errors.name ? 'has-error': ''}`}>
             <label htmlFor="name">Name</label>
@@ -128,7 +130,7 @@ class PencilForm extends Component {
             <input
               name="name"
               value={this.state.name}
-              onChange={this.handleChange.bind(this)}
+              onChange={this.changeHandler.bind(this)}
               id="name"
               className="form-control"
             />
@@ -143,7 +145,7 @@ class PencilForm extends Component {
             <textarea
               name="description"
               value={this.state.description}
-              onChange={this.handleChange.bind(this)}
+              onChange={this.changeHandler.bind(this)}
               id="description"
               className="form-control description"
             />
@@ -153,7 +155,7 @@ class PencilForm extends Component {
               <CheckboxGroup 
                 title="Pencils' buyers"
                 options={this.state.buyers.map(buyer => ({value: buyer.BuyerId, title: buyer.Name}))}
-                controlFunc={this.handleBuyersChange.bind(this)}
+                controlFunc={this.buyersChangeHandler.bind(this)}
                 groupName="selectedBuyers"
                 checkboxClass="form-control"
                 errors={this.state.errors.selectedBuyers}
@@ -183,7 +185,7 @@ class PencilForm extends Component {
             <input
               name="price"
               value={this.state.price}
-              onChange={this.handleChange.bind(this)}
+              onChange={this.changeHandler.bind(this)}
               id="price"
               className="form-control"
             />

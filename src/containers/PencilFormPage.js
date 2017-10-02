@@ -63,14 +63,16 @@ class PencilFormPage extends Component {
   }
 
   render() {
+    let { pencil, buyers } = this.props; 
+
     return (
       <div>
         {
           this.state.pencilUpdated ?
           <Redirect to="/" /> :
           <PencilForm 
-            pencil={this.props.pencil}
-            buyers={this.props.buyers}
+            pencil={pencil}
+            buyers={buyers}
             savePencil={this.savePencil}
             deletePencil={this.deletePencil}
           />
