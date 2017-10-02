@@ -4,6 +4,38 @@ body {
   font-family: sans-serif;
 }
 
+.modal-overlay.visible{
+  display: "block";
+}
+
+.modal-overlay.hidden{
+  display: "none";
+}
+
+.modal-dialog{
+  z-index: 1000000;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.modal-dialog .modal-btn-section{
+  position: relative;
+  min-height: 50px;
+}
+
+.modal-btn-section .submit-btn,
+.modal-btn-section .cancel-btn{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.modal-btn-section .cancel-btn {
+  right: 100px;
+}
+
 .pencil-form {
   height: 700px;
   background: #f7f7f7;
@@ -87,8 +119,6 @@ body {
 
 .pencil-form-manager .menu {
   height: 100%;
-  border-radius: 5px;
-  background: #f7f7f7;
   padding: 25px 0;
 }
 

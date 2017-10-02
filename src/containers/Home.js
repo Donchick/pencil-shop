@@ -15,8 +15,8 @@ class Home extends Component {
 
     render () {
        return <div className="container">
-            <div className="pencil-form-manager row page-top-element">
-                <PencilFormManager pencils={this.props.pencils}/>
+            <div className="pencil-form-manager row">
+                <PencilFormManager pencils={this.props.pencils} classList="page-top-element"/>
             </div>
             <div className="pencils-list row">
                 <PencilsList pencils={this.props.pencils}/>

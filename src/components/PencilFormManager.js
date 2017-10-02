@@ -26,7 +26,7 @@ class App extends Component {
     }
 
     render () {
-        return <div className="menu">
+        return <div className={`menu ${this.props.classList || ''}`}>
             <Link to="/pencils/new" className="menu-element text-capitalize">Add New Pencil</Link>
             <div className="edit-pencil-form">
                 <select

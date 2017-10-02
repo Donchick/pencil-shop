@@ -5,7 +5,7 @@ class Modal extends Component {
         visible: false,
         cancelTitle: this.props.cancelTitle || 'Cancel',
         submitButton: this.props.submitButton || 'Submit',
-        title: '',
+        title: this.props.title || '',
         content: ''
     }
 
@@ -36,8 +36,7 @@ class Modal extends Component {
     }
 
     render () {
-        var modalClass = this.state.visible ? "visible" : "hidden";
-        var modalStyles = this.state.visible ? {display: "block"} : {display: "none"};
+        var modalOverlayClass = this.state.visible ? "visible" : "hidden";
         var backdrop = this.state.visible ? (
             <div className="modal-backdrop fade in" onClick={this.close.bind(this)} />
         ) : null;
@@ -49,21 +48,21 @@ class Modal extends Component {
         ) : null;
 
         return (
-            <div className={modalClass} style={modalStyles}>
+            <div className={`modal-overlay ${modalOverlayClass}`}>
                 {backdrop}
                 <div className="modal-dialog">
                     <div className="modal-content">
-                        {title}
+                        <span className="text-capitalize">{title}</span>
                         {this.state.content &&
                             <div className="modal-body">
                                 {this.state.content}
                             </div>
                         }
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-default" 
-                                             onClick={this.close.bind(this)}>{this.state.cancelTitle}</button>
-                            <button type="button" className="btn btn-primary" 
-                                             onClick={this.submit.bind(this)}>{this.state.submitButton}</button>
+                        <div className="modal-btn-section">
+                            <button type="button" className="cancel-btn btn btn-default" 
+                                                onClick={this.close.bind(this)}>{this.state.cancelTitle}</button>
+                            <button type="button" className="submit-btn btn btn-primary" 
+                                                onClick={this.submit.bind(this)}>{this.state.submitButton}</button>
                         </div>
                     </div>
                 </div>

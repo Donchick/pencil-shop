@@ -51,7 +51,7 @@ class PencilFormPage extends Component {
   }
 
   deletePencil = (id) => {
-    return this.modal.open('are you sure?')
+    return this.modal.open(<p>Are you sure you want to delete the pencil?</p>)
       .then(() => {
         return this.props.deletePencil(id)
           .then(() => {this.setState({ pencilUpdated: true })});
@@ -72,7 +72,9 @@ class PencilFormPage extends Component {
             deletePencil={this.deletePencil}
           />
         }
-        <Modal ref={(modal) => { this.modal = modal; }}/>
+        <Modal
+          title="Delete pencil"
+          ref={(modal) => { this.modal = modal; }}/>
       </div>
     );
   }
