@@ -1,7 +1,8 @@
 import shop from '../api/shop';
+import { BUYERS_RECEIVED } from '../constants/actions';
 
 const receiveBuyers = buyers => ({
-    type: 'RECEIVE_BUYERS',
+    type: BUYERS_RECEIVED,
     buyers: buyers
 })
 

@@ -1,9 +1,11 @@
+import { PENCIL_DELETED, PENCIL_RECEIVED, PENCILS_RECEIVED} from '../constants/actions';
+
 const pencils = (state = [], action) => {
     switch (action.type) {
-        case 'RECEIVE_PENCILS':
+        case PENCILS_RECEIVED:
             return action.pencils;
 
-        case 'RECEIVE_PENCIL':
+        case PENCIL_RECEIVED:
             if (state.find(pencil => pencil.PencilId === action.pencil.PencilId)) {
                 return state.map(pencil => 
                     pencil.PencilId === action.pencil.PencilId ? action.pencil : pencil);
@@ -14,7 +16,7 @@ const pencils = (state = [], action) => {
                 ]
             }
 
-        case 'PENCIL_DELETED':
+        case PENCIL_DELETED:
             return state.filter(pencil => pencil.PencilId !== action.pencil.PencilId)
 
         default:

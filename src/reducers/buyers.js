@@ -1,6 +1,8 @@
+import { BUYERS_RECEIVED } from '../constants/actions';
+
 const buyers = (state = [], action) => {
     switch (action.type) {
-        case 'RECEIVE_BUYERS':
+        case BUYERS_RECEIVED:
             return action.buyers;
 
         default:

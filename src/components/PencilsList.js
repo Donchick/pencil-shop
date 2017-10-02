@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PencilCard from './PencilCard';
 
 const PencilsList = (props) => {

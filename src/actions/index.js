@@ -1,17 +1,18 @@
 import shop from '../api/shop';
+import { PENCIL_DELETED, PENCIL_RECEIVED, PENCILS_RECEIVED} from '../constants/actions';
 
 const receivePencils = pencils => ({
-    type: 'RECEIVE_PENCILS',
+    type: PENCILS_RECEIVED,
     pencils: pencils
 })
 
 const receivePencil = pencil => ({
-    type: 'RECEIVE_PENCIL',
+    type: PENCIL_RECEIVED,
     pencil: pencil
 })
 
 const pencilDeleted = pencil => ({
-    type: 'PENCIL_DELETED',
+    type: PENCIL_DELETED,
     pencil: pencil
 })
 
